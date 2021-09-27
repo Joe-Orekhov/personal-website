@@ -1,25 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
+import { Switch, Link, Route, BrowserRouter } from 'react-router-dom'
+import About from './component/about'
+import Header from './component/header'
+import Portfolio from './component/portfolio'
+import Resume from './component/resume'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function App(){
+
+  return(
+    <div>
+      <Header />
+      <BrowserRouter>
+      <button><Link to='/'>Home</Link></button>
+      <button><Link to='/about'>About</Link></button>
+      <button><Link to='/portfolio'>Portfolio</Link></button>
+      <button><Link to='/resume'>Resume</Link></button>
+      <Switch>
+        <Route path='/about'>
+          <About />
+        </Route >
+        <Route path='/portfolio'>
+          <Portfolio />
+        </Route >
+        <Route path='/resume'>
+          <Resume />
+        </Route >
+        <Route path='/'>
+          <About />
+        </Route >
+      </Switch>
+      </BrowserRouter>
     </div>
-  );
+  )
+
 }
 
 export default App;
+
+
+// <Switch>
+//           <Route path="/about">
+//             <About />
+//           </Route>
+//           <Route path="/users"></Route>
